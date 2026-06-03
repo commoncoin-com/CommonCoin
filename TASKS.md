@@ -25,7 +25,7 @@
 * [x] Remove/update Dogecoin checkpoints and seed nodes
 
 ## Phase 5 — Genesis Block
-* [ ] Write Scrypt-based genesis mining script
+* [-] Write Scrypt-based genesis mining script
 * [ ] Mine Regtest Genesis block and verify Merkle root/hash/nonce
 * [ ] Mine Testnet Genesis block and verify Merkle root/hash/nonce
 * [ ] Mine Mainnet Genesis block and verify Merkle root/hash/nonce
