@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=CommonCoin Core
+Comment=Connect to the CommonCoin P2P Network
+Comment[de]=Verbinde mit dem CommonCoin peer-to-peer Netzwerk
+Comment[fr]=CommonCoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=CommonCoin, eşten eşe kriptografik sanal para birimi
+Exec=commoncoin-qt %u
+Terminal=false
+Type=Application
+Icon=commoncoin128
+MimeType=x-scheme-handler/commoncoin;
+Categories=Office;Finance;

@@ -12,17 +12,17 @@
 * [x] Verify repository integrity and commit git history
 
 ## Phase 3 — Rebranding
-* [ ] Replace 'Dogecoin' -> 'CommonCoin', 'DOGE' -> 'COM', etc.
-* [ ] Rename binaries, icons, splash screens, config files
-* [ ] Update user agent strings and client version info
+* [x] Replace 'Dogecoin' -> 'CommonCoin', 'DOGE' -> 'COM', etc.
+* [x] Rename binaries, icons, splash screens, config files
+* [x] Update user agent strings and client version info
 * [ ] Verify rebranding compiles successfully
 
 ## Phase 4 — Independent Network
-* [ ] Update magic bytes (Mainnet: 0x434f4d4d, Testnet: 0x54434f4d, Regtest: 0x52434f4d)
-* [ ] Assign connection ports (Mainnet: 33555, Testnet: 44555, Regtest: 18444)
-* [ ] Assign RPC ports (Mainnet: 33556, Testnet: 44556, Regtest: 18445)
-* [ ] Configure address prefixes (Mainnet P2PKH: 28/starts with C, P2SH: 22/starts with A/9)
-* [ ] Remove/update Dogecoin checkpoints and seed nodes
+* [x] Update magic bytes (Mainnet: 0x434f4d4d, Testnet: 0x54434f4d, Regtest: 0x52434f4d)
+* [x] Assign connection ports (Mainnet: 33555, Testnet: 44555, Regtest: 18444)
+* [x] Assign RPC ports (Mainnet: 33556, Testnet: 44556, Regtest: 18445)
+* [x] Configure address prefixes (Mainnet P2PKH: 28/starts with C, P2SH: 22/starts with A/9)
+* [x] Remove/update Dogecoin checkpoints and seed nodes
 
 ## Phase 5 — Genesis Block
 * [ ] Write Scrypt-based genesis mining script
