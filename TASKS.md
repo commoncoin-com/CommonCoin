@@ -1,10 +1,10 @@
 # CommonCoin (COM) Project Tasks Checklist
 
 ## Phase 1 — Analysis
-* [ ] Analyze consensus, mining, wallet, RPC, networking, build system, and dependencies
-* [ ] Deliver Architecture Report
-* [ ] Deliver Dependency Report
-* [ ] Deliver Fork Strategy
+* [x] Analyze consensus, mining, wallet, RPC, networking, build system, and dependencies
+* [x] Deliver Architecture Report
+* [x] Deliver Dependency Report
+* [x] Deliver Fork Strategy
 
 ## Phase 2 — Forking
 * [ ] Clone Dogecoin Core repository stable version (v1.14.9)
