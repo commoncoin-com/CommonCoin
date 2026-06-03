@@ -7,7 +7,7 @@
 * [x] Deliver Fork Strategy
 
 ## Phase 2 — Forking
-* [ ] Clone Dogecoin Core repository stable version (v1.14.9)
+* [-] Clone Dogecoin Core repository stable version (v1.14.9)
 * [ ] Initialize project directory structure
 * [ ] Verify repository integrity and commit git history
 
