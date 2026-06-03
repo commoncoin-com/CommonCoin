@@ -7,9 +7,9 @@
 * [x] Deliver Fork Strategy
 
 ## Phase 2 — Forking
-* [-] Clone Dogecoin Core repository stable version (v1.14.9)
-* [ ] Initialize project directory structure
-* [ ] Verify repository integrity and commit git history
+* [x] Clone Dogecoin Core repository stable version (v1.14.9)
+* [x] Initialize project directory structure
+* [x] Verify repository integrity and commit git history
 
 ## Phase 3 — Rebranding
 * [ ] Replace 'Dogecoin' -> 'CommonCoin', 'DOGE' -> 'COM', etc.
