@@ -1,0 +1,17 @@
+{
+    "regtest": {
+        "completed": true,
+        "nonce": 8,
+        "hash": "14ab6b1721c3a31598869ffc0ccdcc194caa928a23d726a8fda4a67061d8e61a"
+    },
+    "testnet": {
+        "completed": true,
+        "nonce": 36396,
+        "hash": "0000008e62079c1bce6d7ec265b4c1adff633d909fdce3fbc3a528f16205802a"
+    },
+    "mainnet": {
+        "completed": true,
+        "nonce": 3426683,
+        "hash": "00000e2c9f37bac91b7ed529282ac38c0efa9294504ebe77a5d4cff97869e265"
+    }
+}

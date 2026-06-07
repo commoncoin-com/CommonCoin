@@ -1,0 +1,35 @@
+{
+  "wallet": {
+    "host": "127.0.0.1",
+    "port": 33556,
+    "user": "commoncoinrpc",
+    "password": "rpc_secure_password_replace_me"
+  },
+  "redis": {
+    "host": "127.0.0.1",
+    "port": 6379,
+    "auth": null
+  },
+  "website": {
+    "enabled": true,
+    "port": 8080,
+    "bindAddress": "0.0.0.0",
+    "adminPassword": "admin_secure_password_replace_me"
+  },
+  "payouts": {
+    "enabled": true,
+    "interval": 600,
+    "daemonMinConf": 240
+  },
+  "logging": {
+    "files": {
+      "level": "info",
+      "directory": "logs",
+      "flushInterval": 1000
+    },
+    "console": {
+      "level": "info",
+      "colors": true
+    }
+  }
+}

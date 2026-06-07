@@ -165,7 +165,7 @@ class GetblockstatsTest(BitcoinTestFramework):
                                 self.nodes[0].getblockstats, hash=blockhashone, stats=['minfee' , 'aaa%s' % inv_sel_stat])
         # Mainchain's genesis block shouldn't be found on regtest
         assert_raises_jsonrpc(-5, 'Block not found', self.nodes[0].getblockstats,
-                                hash='1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691')
+                                hash='00000e2c9f37bac91b7ed529282ac38c0efa9294504ebe77a5d4cff97869e265')
 
         # Invalid number of args
         assert_raises_jsonrpc(-1, 'getblockstats hash ( stats )', self.nodes[0].getblockstats)

@@ -15,13 +15,11 @@ CommonCoin is a decentralized, peer-to-peer cryptocurrency forked from Dogecoin 
 
 ## Project Structure
 - `blockchain/`: Core node daemon, command-line interface, and Qt wallet.
-- `wallets/`: Configuration presets.
 - `mining-pool/`: NOMP (Node Open Mining Pool) configs.
 - `infrastructure/`: Terraform and cloud-init scripts for Oracle Cloud deployment.
 - `monitoring/`: Prometheus configurations and Grafana telemetry dashboards.
 - `scripts/`: Development and utility scripts (genesis block miner, node setup).
 - `docs/`: Deployment, mining, and recovery guides.
-- `tests/`: Testing suites.
 - `website/`: CommonCoin portal.
 
 ## License

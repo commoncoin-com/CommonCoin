@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommonCoin (COM) — The People's Cryptocurrency</title>
+    <meta name="description" content="CommonCoin is a decentralized, open-source peer-to-peer cryptocurrency forked from Dogecoin. Mined by the community, owned by nobody.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo-area">
+                <img src="images/logo.png" alt="CommonCoin Logo" class="nav-logo">
+                <span class="logo-text">Common<span>Coin</span></span>
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link">Overview</a>
+                <a href="#specs" class="nav-link">Specifications</a>
+                <a href="#wallets" class="nav-link">Wallets</a>
+                <a href="#mining" class="nav-link">Mining Guide</a>
+                <a href="#pool" class="nav-link">Mining Pool</a>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg-gradients">
+            <div class="gradient-ball gold-ball"></div>
+            <div class="gradient-ball red-ball"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge">Decentralized & Community-Owned</span>
+                <h1 class="hero-title">The People's<br>Cryptocurrency.</h1>
+                <p class="hero-subtitle">Owned by Nobody. Open to Everybody. CommonCoin is an independent, proof-of-work blockchain built for fair and fast everyday transactions.</p>
+                <div class="hero-buttons">
+                    <a href="#wallets" class="btn btn-primary">Get Started Wallet</a>
+                    <a href="#mining" class="btn btn-secondary">Start Mining COM</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="coin-wrapper">
+                    <div class="coin-container">
+                        <img src="images/logo.png" alt="CommonCoin Gold Coin" class="gold-coin">
+                        <div class="coin-shadow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview / About Section -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">About CommonCoin</span>
+                <h2 class="section-title">Built on Trusted Dogecoin Consensus</h2>
+                <p class="section-desc">CommonCoin is a complete autonomous fork of Dogecoin Core (v1.14.9), maintaining the exact Scrypt hashing algorithm, block rewards, and consensus rules. We've established a completely independent network with a fresh genesis block, decoupled network ports, and custom address schemes to create a pure mining environment.</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card feature-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Fast Transactions</h3>
+                    <p>With a 1-minute target block spacing, CommonCoin offers fast transaction confirmations, perfect for everyday payments.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Community Security</h3>
+                    <p>Secured by proof-of-work Scrypt mining, preventing centralized controls and offering a decentralized distribution layout.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="card-icon">💎</div>
+                    <h3>Fair Issuance</h3>
+                    <p>Starting with block rewards of 100,000 COM per block, guaranteeing miners a robust and predictable subsidy schedule.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications Section -->
+    <section class="section specs-section" id="specs">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">Technical Specs</span>
+                <h2 class="section-title">Blockchain Architecture</h2>
+            </div>
+            
+            <div class="specs-grid">
+                <div class="spec-tile">
+                    <span class="spec-label">Ticker Symbol</span>
+                    <span class="spec-value">COM</span>
+                </div>
+                <div class="spec-tile">
+                    <span class="spec-label">Algorithm</span>
+                    <span class="spec-value">Scrypt PoW</span>
+                </div>
+                <div class="spec-tile">
+                    <span class="spec-label">Block Time</span>
+                    <span class="spec-value">60 Seconds</span>
+                </div>
+                <div class="spec-tile">
+                    <span class="spec-label">Block Reward</span>
+                    <span class="spec-value">100,000 COM</span>
+                </div>
+                <div class="spec-tile">
+                    <span class="spec-label">Address Prefix</span>
+                    <span class="spec-value">"C" (Base58: 28)</span>
+                </div>
+                <div class="spec-tile">
+                    <span class="spec-label">P2P Network Port</span>
+                    <span class="spec-value">33555</span>
+                </div>
+                <div class="spec-tile">
+                    <span class="spec-label">RPC Interface Port</span>
+                    <span class="spec-value">33556</span>
+                </div>
+                <div class="spec-tile">
+                    <span class="spec-label">Halving Interval</span>
+                    <span class="spec-value">100,000 Blocks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wallets Section -->
+    <section class="section wallets-section" id="wallets">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">Downloads</span>
+                <h2 class="section-title">CommonCoin Core Wallets</h2>
+                <p class="section-desc">Download the official CommonCoin Core full-node wallet for your operating system. Secure, verify, and mine blocks directly from the client.</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card download-card">
+                    <div class="os-icon">🪟</div>
+                    <h3>Windows Desktop</h3>
+                    <span class="version-label">v1.0.0-beta</span>
+                    <p>Includes commoncoin-qt GUI wallet and full-node daemons.</p>
+                    <a href="#" class="btn btn-primary btn-full disabled">Download EXE</a>
+                </div>
+                <div class="card download-card active-card">
+                    <div class="os-icon">🐧</div>
+                    <h3>Linux (x86_64 / ARM64)</h3>
+                    <span class="version-label">v1.0.0-beta</span>
+                    <p>Precompiled command line executables (commoncoind, commoncoin-cli).</p>
+                    <a href="#" class="btn btn-primary btn-full disabled">Download Tarball</a>
+                </div>
+                <div class="card download-card">
+                    <div class="os-icon">🍏</div>
+                    <h3>macOS Desktop</h3>
+                    <span class="version-label">v1.0.0-beta</span>
+                    <p>Supports both Apple Silicon (M1/M2/M3) and Intel CPUs.</p>
+                    <a href="#" class="btn btn-primary btn-full disabled">Download DMG</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mining Guide Section -->
+    <section class="section mining-section" id="mining">
+        <div class="container">
+            <div class="grid grid-2-equal">
+                <div class="mining-info">
+                    <span class="section-tag">How To Mine</span>
+                    <h2 class="section-title">Start Mining CommonCoin</h2>
+                    <p>Since CommonCoin uses the Scrypt proof-of-work algorithm, you can mine it using standard CPU miners, GPU miners, or specialized ASIC devices compatible with Scrypt.</p>
+                    
+                    <div class="accordion">
+                        <div class="accordion-item active">
+                            <div class="accordion-title">Step 1: Get an Address</div>
+                            <div class="accordion-content">
+                                Open your CommonCoin Core wallet and create a new receiving address. It will begin with the letter <strong>'C'</strong> (e.g., <code>CRx...</code>).
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-title">Step 2: Choose a Miner</div>
+                            <div class="accordion-content">
+                                For CPU mining, use <strong>cpuminer-multi</strong>. For GPU mining, use <strong>cgminer</strong> or <strong>sgminer</strong> with Scrypt support.
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-title">Step 3: Connect to Pool & Mine</div>
+                            <div class="accordion-content">
+                                Configure your mining command pointing to our stratum pool or set up solo mining in your wallet configuration.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mining-console">
+                    <div class="console-header">
+                        <span class="dot red-dot"></span>
+                        <span class="dot yellow-dot"></span>
+                        <span class="dot green-dot"></span>
+                        <span class="console-title">miner_commands.sh</span>
+                    </div>
+                    <div class="console-body">
+                        <div class="console-tabs">
+                            <button class="console-tab active" onclick="switchTab('cpu')">CPU Mining</button>
+                            <button class="console-tab" onclick="switchTab('gpu')">GPU Mining</button>
+                            <button class="console-tab" onclick="switchTab('solo')">Solo Daemon</button>
+                        </div>
+                        
+                        <div class="tab-content" id="tab-cpu">
+                            <p class="console-comment"># Mine using cpuminer-multi against our stratum pool</p>
+                            <pre><code>minerd -a scrypt -o stratum+tcp://pool.commoncoin.org:3032 -u CYourWalletAddressHere -p x</code></pre>
+                            <button class="btn-copy" onclick="copyConsole(this)">Copy Command</button>
+                        </div>
+                        
+                        <div class="tab-content hidden" id="tab-gpu">
+                            <p class="console-comment"># Mine using cgminer on opencl graphics cards</p>
+                            <pre><code>cgminer --scrypt -o stratum+tcp://pool.commoncoin.org:3256 -u CYourWalletAddressHere -p x -I 13</code></pre>
+                            <button class="btn-copy" onclick="copyConsole(this)">Copy Command</button>
+                        </div>
+
+                        <div class="tab-content hidden" id="tab-solo">
+                            <p class="console-comment"># Run local daemon configured for solo mining</p>
+                            <pre><code>commoncoind -daemon -rpcuser=user -rpcpassword=pass -gen=1 -genproclimit=4</code></pre>
+                            <button class="btn-copy" onclick="copyConsole(this)">Copy Command</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mining Pool Section -->
+    <section class="section pool-section" id="pool">
+        <div class="container">
+            <div class="card glass-card pool-hero">
+                <div class="pool-badge">Official Pool</div>
+                <h2>Node Open Mining Pool (NOMP)</h2>
+                <p>We host a zero-fee stratum mining pool for our community. Connect your miners now to participate in finding blocks and earning rewards.</p>
+                
+                <div class="pool-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="pool-hashrate">42.5 MH/s</span>
+                        <span class="stat-lbl">Pool Hashrate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="pool-miners">12</span>
+                        <span class="stat-lbl">Active Workers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="pool-fee">0.0%</span>
+                        <span class="stat-lbl">Mining Fee</span>
+                    </div>
+                </div>
+                
+                <div class="pool-links">
+                    <a href="http://pool.commoncoin.org:8080" class="btn btn-primary" target="_blank">Open Pool Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="CommonCoin Logo" class="footer-logo">
+                <h3>CommonCoin</h3>
+                <p>The People's Cryptocurrency. Built on Dogecoin core consensus, modified for the modern decentralized landscape.</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 CommonCoin Core Developers. Distributed under the MIT Software License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

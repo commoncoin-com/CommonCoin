@@ -1,0 +1,21 @@
+==================================================
+GENESIS BLOCK METADATA SUMMARY FOR chainparams.cpp
+==================================================
+Timestamp String: CommonCoin - The People's Cryptocurrency
+Genesis Time: 1780488986
+Merkle Root: 0xd9fa7decaeefd6a23a75c2c124db2b2bf087a53ec34ccce548825486800177a4
+
+MAINNET:
+  Nonce: 3426683
+  Hash:  0x00000e2c9f37bac91b7ed529282ac38c0efa9294504ebe77a5d4cff97869e265
+  Bits:  0x01e0ffff0
+
+TESTNET:
+  Nonce: 36396
+  Hash:  0x0000008e62079c1bce6d7ec265b4c1adff633d909fdce3fbc3a528f16205802a
+  Bits:  0x01e0ffff0
+
+REGTEST:
+  Nonce: 8
+  Hash:  0x14ab6b1721c3a31598869ffc0ccdcc194caa928a23d726a8fda4a67061d8e61a
+  Bits:  0x207fffff

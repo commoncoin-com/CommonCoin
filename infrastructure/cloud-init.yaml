@@ -1,0 +1,109 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - build-essential
+  - libtool
+  - autotools-dev
+  - autoconf
+  - pkg-config
+  - libssl-dev
+  - libevent-dev
+  - bsdmainutils
+  - libboost-system-dev
+  - libboost-filesystem-dev
+  - libboost-chrono-dev
+  - libboost-program-options-dev
+  - libboost-test-dev
+  - libboost-thread-dev
+  - libminiupnpc-dev
+  - libzmq3-dev
+  - git
+  - curl
+  - ufw
+  - fail2ban
+
+write_files:
+  - path: /etc/systemd/system/commoncoind.service
+    permissions: '0644'
+    owner: root:root
+    content: |
+      [Unit]
+      Description=CommonCoin Daemon
+      After=network.target
+
+      [Service]
+      User=ubuntu
+      Group=ubuntu
+      Type=forking
+      PIDFile=/home/ubuntu/.commoncoin/commoncoind.pid
+      ExecStart=/usr/local/bin/commoncoind -daemon -pid=/home/ubuntu/.commoncoin/commoncoind.pid -conf=/home/ubuntu/.commoncoin/commoncoin.conf -datadir=/home/ubuntu/.commoncoin
+      Restart=always
+      RestartSec=10
+      PrivateTmp=true
+      ProtectSystem=full
+      NoNewPrivileges=true
+
+      [Install]
+      WantedBy=multi-user.target
+
+  - path: /home/ubuntu/.commoncoin/commoncoin.conf
+    permissions: '0600'
+    owner: ubuntu:ubuntu
+    content: |
+      # CommonCoin Configuration
+      daemon=1
+      server=1
+      listen=1
+      txindex=1
+      rpcuser=commoncoinrpc
+      rpcpassword=rpc_secure_password_replace_me
+      rpcallowip=127.0.0.1
+      rpcallowip=10.0.0.0/16
+      rpcport=33556
+      port=33555
+      
+      # Connection/Performance Settings
+      maxconnections=125
+      keypool=100
+      
+      # Log settings
+      logips=1
+      debug=1
+
+runcmd:
+  # 1. Setup Firewall
+  - ufw default deny incoming
+  - ufw default allow outgoing
+  - ufw allow 22/tcp
+  - ufw allow 33555/tcp
+  - ufw allow 33556/tcp
+  - ufw --force enable
+
+  # 2. Compile Berkeley DB 5.3.28 (Required for CommonCoin wallet compatibility)
+  - mkdir -p /tmp/bdb-build
+  - cd /tmp/bdb-build
+  - curl -sL https://download.oracle.com/berkeley-db/db-5.3.28.NC.tar.gz -o db-5.3.28.NC.tar.gz
+  - tar -xzf db-5.3.28.NC.tar.gz
+  - cd db-5.3.28.NC
+  # Apply C++11 patches for modern compilers
+  - sed -i 's/atomic_init/atomic_init_db/g' src/dbinc/atomic.h src/mp/mp_fget.c src/mp/mp_mvcc.c src/mp/mp_region.c src/mutex/mut_method.c src/mutex/mut_tas.c
+  - sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' src/dbinc/atomic.h
+  # Replace config.guess and config.sub for modern architectures compatibility
+  - curl -sL "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=4550d2f15b3a7ce2451c1f29500b9339430c877f" -o dist/config.guess
+  - curl -sL "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=4550d2f15b3a7ce2451c1f29500b9339430c877f" -o dist/config.sub
+  - cd build_unix
+  - ../dist/configure --enable-cxx --disable-shared --disable-replication --with-pic --prefix=/usr/local/bdb53
+  - make -j$(nproc)
+  - make install
+  - ldconfig
+
+  # 3. Setup directories
+  - mkdir -p /home/ubuntu/src
+  - chown -R ubuntu:ubuntu /home/ubuntu/src
+  - mkdir -p /home/ubuntu/.commoncoin
+  - chown -R ubuntu:ubuntu /home/ubuntu/.commoncoin
+
+  # 4. Setup Cleanups
+  - rm -rf /tmp/bdb-build
