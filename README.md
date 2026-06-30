@@ -1,4 +1,8 @@
-# CommonCoin (COM)
+<h1 align="center">
+<img src="blockchain/share/pixmaps/commoncoin256.png" alt="CommonCoin" width="150"/>
+<br/>
+CommonCoin (COM)
+</h1>
 
 > **Owned by Nobody. Open to Everybody.**
 > *The People's Cryptocurrency*
