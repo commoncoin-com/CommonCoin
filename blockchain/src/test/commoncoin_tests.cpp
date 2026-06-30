@@ -15,47 +15,17 @@ BOOST_FIXTURE_TEST_SUITE(commoncoin_tests, TestingSetup)
  * the maximum block reward at a given height for a block without fees
  */
 uint64_t expectedMaxSubsidy(int height) {
-    if (height < 100000) {
-        return 1000000 * COIN;
-    } else if (height < 145000) {
-        return 500000 * COIN;
-    } else if (height < 200000) {
-        return 250000 * COIN;
-    } else if (height < 300000) {
-        return 125000 * COIN;
-    } else if (height < 400000) {
-        return  62500 * COIN;
-    } else if (height < 500000) {
-        return  31250 * COIN;
-    } else if (height < 600000) {
-        return  15625 * COIN;
-    } else {
-        return  10000 * COIN;
+    if (height == 0) {
+        return 88 * COIN;
     }
+    return 10000 * COIN;
 }
 
-/**
- * the minimum possible value for the maximum block reward at a given height
- * for a block without fees
- */
 uint64_t expectedMinSubsidy(int height) {
-    if (height < 100000) {
-        return 0;
-    } else if (height < 145000) {
-        return 0;
-    } else if (height < 200000) {
-        return 250000 * COIN;
-    } else if (height < 300000) {
-        return 125000 * COIN;
-    } else if (height < 400000) {
-        return  62500 * COIN;
-    } else if (height < 500000) {
-        return  31250 * COIN;
-    } else if (height < 600000) {
-        return  15625 * COIN;
-    } else {
-        return  10000 * COIN;
+    if (height == 0) {
+        return 88 * COIN;
     }
+    return 10000 * COIN;
 }
 
 BOOST_AUTO_TEST_CASE(subsidy_first_100k_test)
@@ -68,13 +38,12 @@ BOOST_AUTO_TEST_CASE(subsidy_first_100k_test)
         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
         CAmount nSubsidy = GetCommonCoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
         BOOST_CHECK(MoneyRange(nSubsidy));
-        BOOST_CHECK(nSubsidy <= 1000000 * COIN);
+        BOOST_CHECK(nSubsidy <= 10000 * COIN);
         nSum += nSubsidy;
-        // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
         prevHash += nSubsidy;
     }
 
-    const CAmount expected = 54894174438 * COIN;
+    const CAmount expected = (88 + 100000 * 10000) * COIN;
     BOOST_CHECK_EQUAL(expected, nSum);
 }
 
@@ -88,17 +57,15 @@ BOOST_AUTO_TEST_CASE(subsidy_100k_145k_test)
         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
         CAmount nSubsidy = GetCommonCoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
         BOOST_CHECK(MoneyRange(nSubsidy));
-        BOOST_CHECK(nSubsidy <= 500000 * COIN);
+        BOOST_CHECK(nSubsidy <= 10000 * COIN);
         nSum += nSubsidy;
-        // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
         prevHash += nSubsidy;
     }
 
-    const CAmount expected = 12349960000 * COIN;
+    const CAmount expected = 450010000 * COIN;
     BOOST_CHECK_EQUAL(expected, nSum);
 }
 
-// Check the simplified rewards after block 145,000
 BOOST_AUTO_TEST_CASE(subsidy_post_145k_test)
 {
     const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
@@ -107,12 +74,10 @@ BOOST_AUTO_TEST_CASE(subsidy_post_145k_test)
     for (int nHeight = 145000; nHeight < 600000; nHeight++) {
         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
         CAmount nSubsidy = GetCommonCoinBlockSubsidy(nHeight, params, prevHash);
-        CAmount nExpectedSubsidy = (500000 >> (nHeight / 100000)) * COIN;
         BOOST_CHECK(MoneyRange(nSubsidy));
-        BOOST_CHECK_EQUAL(nSubsidy, nExpectedSubsidy);
+        BOOST_CHECK_EQUAL(nSubsidy, 10000 * COIN);
     }
 
-    // Test reward at 600k+ is constant
     CAmount nConstantSubsidy = GetCommonCoinBlockSubsidy(600000, mainParams.GetConsensus(600000), prevHash);
     BOOST_CHECK_EQUAL(nConstantSubsidy, 10000 * COIN);
 

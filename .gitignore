@@ -1,0 +1,19 @@
+# Ignore Terraform files and state
+infrastructure/.terraform/
+infrastructure/terraform.tfstate*
+infrastructure/terraform.tfvars
+
+# Ignore ZIP archives and local state files
+blockchain.zip
+*.zip
+scripts/miner_state.json
+
+# Ignore local keys or credentials
+*.pem
+*.key
+*.pub
+id_rsa*
+.env
+
+# Ignore logs
+*.log

@@ -85,14 +85,14 @@ public:
         consensus.BIP34Hash = uint256();
         consensus.BIP65Height = 1; // Enforce CHECKLOCKTIMEVERIFY from block 1
         consensus.BIP66Height = 1; // Enforce strict DER from block 1
-        consensus.powLimit = uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20;
+        consensus.powLimit = uint256S("0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1;
         consensus.nPowTargetTimespan = 4 * 60 * 60; // pre-digishield: 4 hours
         consensus.nPowTargetSpacing = 60; // 1 minute
         consensus.fDigishieldDifficultyCalculation = false;
         consensus.nCoinbaseMaturity = 30;
-        consensus.fPowAllowMinDifficultyBlocks = false;
-        consensus.fPowAllowDigishieldMinDifficultyBlocks = false;
-        consensus.fPowNoRetargeting = false;
+        consensus.fPowAllowMinDifficultyBlocks = true;
+        consensus.fPowAllowDigishieldMinDifficultyBlocks = true;
+        consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 9576; // 95% of 10,080
         consensus.nMinerConfirmationWindow = 10080; // 60 * 24 * 7 = 10,080 blocks, or one week
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
@@ -157,7 +157,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-        assert(consensus.hashGenesisBlock == uint256S("0x00000e2c9f37bac91b7ed529282ac38c0efa9294504ebe77a5d4cff97869e265"));
+        assert(consensus.hashGenesisBlock == uint256S("0x95038c1832fde947069c67a846c6a2e8655351431bde617530e7ad5bfb4bd831"));
         assert(genesis.hashMerkleRoot == uint256S("0xd9fa7decaeefd6a23a75c2c124db2b2bf087a53ec34ccce548825486800177a4"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
@@ -179,7 +179,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (      0, uint256S("0x00000e2c9f37bac91b7ed529282ac38c0efa9294504ebe77a5d4cff97869e265"))
+            (      0, uint256S("0x95038c1832fde947069c67a846c6a2e8655351431bde617530e7ad5bfb4bd831"))
         };
 
         chainTxData = ChainTxData{
@@ -291,7 +291,7 @@ public:
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         minDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-        assert(consensus.hashGenesisBlock == uint256S("0x0000008e62079c1bce6d7ec265b4c1adff633d909fdce3fbc3a528f16205802a"));
+        assert(consensus.hashGenesisBlock == uint256S("0x14655712af21b6bc926350da2d5dd535f53e0a7c4dd3f726ecbc8df778e06943"));
         assert(genesis.hashMerkleRoot == uint256S("0xd9fa7decaeefd6a23a75c2c124db2b2bf087a53ec34ccce548825486800177a4"));
 
         vSeeds.clear();
@@ -312,7 +312,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x0000008e62079c1bce6d7ec265b4c1adff633d909fdce3fbc3a528f16205802a"))
+            ( 0, uint256S("0x14655712af21b6bc926350da2d5dd535f53e0a7c4dd3f726ecbc8df778e06943"))
         };
 
         chainTxData = ChainTxData{
@@ -401,7 +401,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-        assert(consensus.hashGenesisBlock == uint256S("0x14ab6b1721c3a31598869ffc0ccdcc194caa928a23d726a8fda4a67061d8e61a"));
+        assert(consensus.hashGenesisBlock == uint256S("0xb66c27779549c51757e55864d502bb2add829802191afb76d0ddf25d378d9928"));
         assert(genesis.hashMerkleRoot == uint256S("0xd9fa7decaeefd6a23a75c2c124db2b2bf087a53ec34ccce548825486800177a4"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
@@ -414,7 +414,7 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("0x14ab6b1721c3a31598869ffc0ccdcc194caa928a23d726a8fda4a67061d8e61a"))
+            ( 0, uint256S("0xb66c27779549c51757e55864d502bb2add829802191afb76d0ddf25d378d9928"))
         };
 
         chainTxData = ChainTxData{

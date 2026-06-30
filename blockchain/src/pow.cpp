@@ -33,6 +33,9 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 {
     unsigned int nProofOfWorkLimit = UintToArith256(params.powLimit).GetCompact();
 
+    if (params.fPowNoRetargeting)
+        return nProofOfWorkLimit;
+
     // Genesis block
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
