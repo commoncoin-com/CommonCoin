@@ -8,7 +8,7 @@ CommonCoin is a decentralized, peer-to-peer cryptocurrency forked from Dogecoin 
 ## Specifications
 - **Block Time**: 1 Minute
 - **Mining Algorithm**: Scrypt
-- **Block Reward**: 100,000 COM (inflationary model identical to Dogecoin)
+- **Block Reward**: 10,000 COM (constant tail emission)
 - **Mainnet Port**: 33555 (RPC: 33556)
 - **Testnet Port**: 44555 (RPC: 44556)
 - **Address Prefix**: 'C' (P2PKH version byte 28/0x1c)

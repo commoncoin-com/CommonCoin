@@ -18,7 +18,7 @@ The final parameters configured in the codebase are validated as follows:
 | **Consensus** | Hashing Algorithm | Scrypt PoW | Unchanged |
 | | Target Block Spacing | 60 seconds (1 minute) | Unchanged |
 | | Coinbase Maturity | 30 blocks (240 post-Digishield) | Unchanged |
-| | Subsidy Halving | 100,000 blocks | Unchanged |
+| | Subsidy Halving | None (Constant reward) | Configured |
 | **Address** | P2PKH Prefix | `28` (Starts with 'C') | Verified |
 | | P2SH Prefix | `22` (Starts with 'A'/'9') | Verified |
 | | WIF Private Key | `158` (Starts with 'Q') | Verified |
