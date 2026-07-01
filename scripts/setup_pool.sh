@@ -10,7 +10,7 @@ echo "=== 2. Setting up NOMP directory ==="
 cd /home/ubuntu
 if [ ! -d "/home/ubuntu/nomp" ]; then
     echo "Cloning NOMP repository..."
-    git clone https://github.com/zone117x/node-open-mining-pool.git nomp
+    git clone https://github.com/zone117x/node-open-mining-portal.git nomp
 fi
 
 cd /home/ubuntu/nomp
