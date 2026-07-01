@@ -12,9 +12,18 @@
   },
   "website": {
     "enabled": true,
+    "host": "0.0.0.0",
     "port": 8080,
-    "bindAddress": "0.0.0.0",
-    "adminPassword": "admin_secure_password_replace_me"
+    "stratumHost": "129.159.233.153",
+    "stats": {
+      "updateInterval": 60,
+      "historicalRetention": 43200,
+      "hashrateWindow": 300
+    },
+    "adminCenter": {
+      "enabled": false,
+      "password": "admin_secure_password_replace_me"
+    }
   },
   "payouts": {
     "enabled": true,
