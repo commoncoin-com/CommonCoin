@@ -25,6 +25,7 @@
       "password": "admin_secure_password_replace_me"
     }
   },
+  "switching": {},
   "payouts": {
     "enabled": true,
     "interval": 600,
