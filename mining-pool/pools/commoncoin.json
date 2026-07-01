@@ -1,13 +1,15 @@
 {
-  "name": "commoncoin",
-  "symbol": "COM",
-  "algorithm": "scrypt",
-  "daemon": {
-    "host": "127.0.0.1",
-    "port": 33556,
-    "user": "commoncoinrpc",
-    "password": "rpc_secure_password_replace_me"
-  },
+  "enabled": true,
+  "coin": "commoncoin.json",
+  "address": "CAddressForPoolFeesGoesHere",
+  "daemons": [
+    {
+      "host": "127.0.0.1",
+      "port": 33556,
+      "user": "commoncoinrpc",
+      "password": "rpc_secure_password_replace_me"
+    }
+  ],
   "ports": {
     "3032": {
       "diff": 1,
@@ -30,18 +32,15 @@
       }
     }
   },
-  "payouts": {
-    "enabled": true,
-    "requireSharePercent": 0,
-    "interval": 600,
-    "fee": 1.0,
-    "address": "CAddressForPoolFeesGoesHere",
-    "daemonMinConf": 240
-  },
-  "recipientFee": 1.0,
   "paymentProcessing": {
     "enabled": true,
     "minimumPayment": 10.0,
-    "daemonMinConf": 240
+    "paymentInterval": 120,
+    "daemon": {
+      "host": "127.0.0.1",
+      "port": 33556,
+      "user": "commoncoinrpc",
+      "password": "rpc_secure_password_replace_me"
+    }
   }
 }

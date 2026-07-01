@@ -1,0 +1,6 @@
+{
+  "name": "commoncoin",
+  "symbol": "COM",
+  "algorithm": "scrypt",
+  "peerMagic": "fbc0b6db"
+}

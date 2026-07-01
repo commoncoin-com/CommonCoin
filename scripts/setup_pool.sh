@@ -22,10 +22,11 @@ echo "=== 3. Configuring Pool Settings ==="
 POOL_FEE_ADDR=$(commoncoin-cli -conf=/home/ubuntu/.commoncoin/commoncoin.conf getnewaddress "pool_fees")
 echo "Generated Pool Fee Address: $POOL_FEE_ADDR"
 
-mkdir -p /home/ubuntu/nomp/pools /home/ubuntu/nomp/pool_configs
+mkdir -p /home/ubuntu/nomp/pools /home/ubuntu/nomp/pool_configs /home/ubuntu/nomp/coins
 cp /home/ubuntu/src/mining-pool/config.json /home/ubuntu/nomp/config.json
 cp /home/ubuntu/src/mining-pool/pools/commoncoin.json /home/ubuntu/nomp/pools/commoncoin.json
 cp /home/ubuntu/src/mining-pool/pools/commoncoin.json /home/ubuntu/nomp/pool_configs/commoncoin.json
+cp /home/ubuntu/src/mining-pool/coins/commoncoin.json /home/ubuntu/nomp/coins/commoncoin.json
 
 # Replace placeholders in pool configuration
 sed -i "s/CAddressForPoolFeesGoesHere/$POOL_FEE_ADDR/g" /home/ubuntu/nomp/pools/commoncoin.json
