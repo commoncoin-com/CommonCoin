@@ -154,7 +154,9 @@ find . -name "*.sh" -exec chmod +x {} +
 ./autogen.sh
 ./configure LDFLAGS="-L/usr/local/bdb53/lib/" CPPFLAGS="-I/usr/local/bdb53/include/" --without-gui --enable-hardening --prefix=/usr/local
 make -C src commoncoind commoncoin-cli commoncoin-tx
-sudo make -C src install
+sudo cp src/commoncoind /usr/local/bin/
+sudo cp src/commoncoin-cli /usr/local/bin/
+sudo cp src/commoncoin-tx /usr/local/bin/
 echo "CommonCoin daemon compiled and installed successfully."
 
 echo "=== 5. Starting Node 1 (daemon) ==="
