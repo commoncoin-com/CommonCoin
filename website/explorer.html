@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommonCoin Block Explorer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0f12;
+            --card-bg: #151922;
+            --accent-color: #d4af37;
+            --text-color: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border-color: #242b35;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0 0 1rem 0;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            background: #090a0f;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .search-btn {
+            background-color: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .search-btn:hover {
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #1a202c;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .hash-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: monospace;
+            cursor: pointer;
+        }
+
+        .hash-link:hover {
+            text-decoration: underline;
+        }
+
+        .details-area {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .pre-wrapper {
+            background: #090a0f;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        pre {
+            margin: 0;
+            color: #34d399;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <a href="/explorer" class="logo">
+                CommonCoin Explorer
+            </a>
+            <a href="/" style="color: var(--text-secondary); text-decoration: none;">Back to Website</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Search bar -->
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search by Block Hash, Block Height, or Transaction ID...">
+            <button class="search-btn" onclick="handleSearch()">Search</button>
+        </div>
+
+        <!-- Network Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-height">-</div>
+                <div class="stat-label">Block Height</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-diff">-</div>
+                <div class="stat-label">Difficulty</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-chain">-</div>
+                <div class="stat-label">Chain Network</div>
+            </div>
+        </div>
+
+        <!-- Latest Blocks -->
+        <div id="latest-blocks-section">
+            <h2>Latest Mined Blocks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Height</th>
+                        <th>Time</th>
+                        <th>Transactions</th>
+                        <th>Block Hash</th>
+                    </tr>
+                </thead>
+                <tbody id="blocks-tbody">
+                    <!-- Dynamic blocks go here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Details Area -->
+        <div id="details-section" class="details-area">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 id="details-title">Details</h2>
+                <button class="search-btn" style="background: #374151; color: #fff;" onclick="closeDetails()">Close</button>
+            </div>
+            <div class="pre-wrapper">
+                <pre><code id="details-code">JSON raw output here...</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchApi(url) {
+            const res = await fetch(url);
+            return res.json();
+        }
+
+        async function loadDashboard() {
+            try {
+                const status = await fetchApi('/api/status');
+                document.getElementById('stat-height').innerText = status.blocks;
+                document.getElementById('stat-diff').innerText = status.difficulty.toFixed(6);
+                document.getElementById('stat-chain').innerText = status.chain;
+
+                const blocks = await fetchApi('/api/latest_blocks');
+                const tbody = document.getElementById('blocks-tbody');
+                tbody.innerHTML = '';
+                blocks.forEach(block => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>#${block.height}</strong></td>
+                        <td>${new Date(block.time * 1000).toLocaleTimeString()}</td>
+                        <td>${block.txs}</td>
+                        <td><span class="hash-link" onclick="viewBlock('${block.hash}')">${block.hash}</span></td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (e) {
+                console.error("Failed to load dashboard data", e);
+            }
+        }
+
+        async function viewBlock(hash) {
+            try {
+                const block = await fetchApi(`/api/block/${hash}`);
+                showDetails(`Block details for height: #${block.height}`, block);
+            } catch (e) {
+                alert("Error fetching block: " + e.message);
+            }
+        }
+
+        async function viewTx(txid) {
+            try {
+                const tx = await fetchApi(`/api/tx/${txid}`);
+                showDetails(`Transaction: ${txid}`, tx);
+            } catch (e) {
+                alert("Error fetching transaction: " + e.message);
+            }
+        }
+
+        function showDetails(title, data) {
+            document.getElementById('details-title').innerText = title;
+            document.getElementById('details-code').innerText = JSON.stringify(data, null, 2);
+            document.getElementById('details-section').style.display = 'block';
+            window.scrollTo({
+                top: document.getElementById('details-section').offsetTop - 50,
+                behavior: 'smooth'
+            });
+        }
+
+        function closeDetails() {
+            document.getElementById('details-section').style.display = 'none';
+        }
+
+        async function handleSearch() {
+            const query = document.getElementById('search-input').value.trim();
+            if (!query) return;
+
+            // Search by height (integer) or hash
+            if (/^\d+$/.test(query)) {
+                try {
+                    const block = await fetchApi(`/api/block/${query}`);
+                    if (block && block.hash) {
+                        return showDetails(`Block Details: #${block.height}`, block);
+                    }
+                } catch (e) {
+                    alert("Failed to find block height: " + e.message);
+                }
+            } else if (query.length === 64) {
+                // Try Block Hash first
+                try {
+                    const block = await fetchApi(`/api/block/${query}`);
+                    if (block && block.hash) {
+                        return showDetails(`Block Details: #${block.height}`, block);
+                    }
+                } catch (e) {
+                    // Try Transaction Hash
+                    try {
+                        const tx = await fetchApi(`/api/tx/${query}`);
+                        if (tx && tx.txid) {
+                            return showDetails(`Transaction: ${query}`, tx);
+                        }
+                    } catch (err) {
+                        alert("No block or transaction found with that hash!");
+                    }
+                }
+            } else {
+                alert("Invalid search format! Enter a block hash or transaction ID.");
+            }
+        }
+
+        // Initialize dashboard
+        loadDashboard();
+        setInterval(loadDashboard, 15000);
+    </script>
+</body>
+</html>

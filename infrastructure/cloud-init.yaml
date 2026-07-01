@@ -23,6 +23,9 @@ packages:
   - curl
   - ufw
   - fail2ban
+  - redis-server
+  - nodejs
+  - npm
 
 write_files:
   - path: /etc/systemd/system/commoncoind.service
@@ -79,6 +82,9 @@ runcmd:
   - ufw allow 22/tcp
   - ufw allow 33555/tcp
   - ufw allow 33556/tcp
+  - ufw allow 8080/tcp
+  - ufw allow 3032/tcp
+  - ufw allow 3256/tcp
   - ufw --force enable
 
   # 2. Compile Berkeley DB 5.3.28 (Required for CommonCoin wallet compatibility)
