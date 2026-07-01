@@ -135,11 +135,11 @@ sudo apt-get install -y unzip
 cd /home/ubuntu/src
 unzip -q -o blockchain.zip
 rm -f blockchain.zip
-find /home/ubuntu/src/blockchain -type f -exec touch {} +
-find /home/ubuntu/src/blockchain -name "*.o" -delete
-find /home/ubuntu/src/blockchain -name "*.a" -delete
-find /home/ubuntu/src/blockchain -name "*.la" -delete
-find /home/ubuntu/src/blockchain -name "*.lo" -delete
+find /home/ubuntu/src/blockchain -name "Makefile.am" -o -name "Makefile.in" -o -name "configure.ac" -o -name "configure" -o -name "*.include" | xargs touch
+# find /home/ubuntu/src/blockchain -name "*.o" -delete
+# find /home/ubuntu/src/blockchain -name "*.a" -delete
+# find /home/ubuntu/src/blockchain -name "*.la" -delete
+# find /home/ubuntu/src/blockchain -name "*.lo" -delete
 echo "Unzipped codebase, touched files to resolve clock skew, and cleaned up pre-existing compile artifacts."
 
 echo "=== 4. Compiling CommonCoin ==="
@@ -153,8 +153,8 @@ chmod +x autogen.sh
 find . -name "*.sh" -exec chmod +x {} +
 ./autogen.sh
 ./configure LDFLAGS="-L/usr/local/bdb53/lib/" CPPFLAGS="-I/usr/local/bdb53/include/" --without-gui --enable-hardening --prefix=/usr/local
-make -j$(nproc)
-sudo make install
+make -C src commoncoind commoncoin-cli commoncoin-tx
+sudo make -C src install
 echo "CommonCoin daemon compiled and installed successfully."
 
 echo "=== 5. Starting Node 1 (daemon) ==="
