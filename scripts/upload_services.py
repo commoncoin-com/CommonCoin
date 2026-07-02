@@ -4,7 +4,7 @@ import zipfile
 import sys
 
 PRIVATE_KEY_PATH = "C:\\Users\\DELL\\.ssh\\id_rsa"
-VM_IP = "129.159.233.153"
+VM_IP = "140.245.227.221"
 
 def run_cmd(cmd):
     res = subprocess.run(cmd, shell=True, capture_output=True, text=True)

@@ -72,6 +72,49 @@ resource "oci_core_security_list" "commoncoin_sl" {
       max = 33556
     }
   }
+
+  # NOMP Web Portal
+  ingress_security_rules {
+    protocol    = "6" # TCP
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    tcp_options {
+      min = 8080
+      max = 8080
+    }
+  }
+
+  # Block Explorer Web Portal
+  ingress_security_rules {
+    protocol    = "6" # TCP
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    tcp_options {
+      min = 8081
+      max = 8081
+    }
+  }
+
+  # Stratum Mining Ports
+  ingress_security_rules {
+    protocol    = "6" # TCP
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    tcp_options {
+      min = 3032
+      max = 3032
+    }
+  }
+
+  ingress_security_rules {
+    protocol    = "6" # TCP
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    tcp_options {
+      min = 3256
+      max = 3256
+    }
+  }
 }
 
 # Subnet
